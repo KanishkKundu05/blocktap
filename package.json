@@ -1,1 +1,14 @@
-{"name":"blocktap","version":"1.0.0","private":true,"scripts":{"dev":"python3 -m http.server 3000 --directory dist","check":"node --check dist/script.js"}}
+{
+  "name": "blocktap",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 3000 --directory dist",
+    "check": "node --check dist/script.js && node --check dist/waitlist.js && node --test tests/*.test.mjs",
+    "convex:dev": "convex dev",
+    "convex:deploy": "convex deploy"
+  },
+  "dependencies": {
+    "convex": "^1.48.0"
+  }
+}
