@@ -10,12 +10,25 @@ test('normalizes email and associates the delivery fields', () => {
   assert.equal(result.address, '123 Example St');
   assert.equal(result.apartment, '');
 });
-test('requires email, address, and consent', () => {
-  for (const change of [{ email: 'invalid' }, { address: '  ' }, { city: '' }, { consent: false }, { consent: 'on' }, { country: 5 }, { email: 'a\n@example.com' }, { address: 'x'.repeat(201) }]) {
+test('requires a valid email and consent and validates provided address fields', () => {
+  for (const change of [{ email: 'invalid' }, { consent: false }, { consent: 'on' }, { country: 5 }, { email: 'a\n@example.com' }, { address: 'x'.repeat(201) }]) {
     assert.throws(() => validateSignup({ ...signup, ...change }));
   }
   for (const invalid of [null, [], 'hello']) assert.throws(() => validateSignup(invalid));
 });
 test('supports countries without states or postal codes', () => {
   assert.doesNotThrow(() => validateSignup({ ...signup, region: '', postal: '' }));
+});
+
+test('accepts email-only signups with no name or delivery address', () => {
+  const result = validateSignup({ email: 'only@example.com', consent: true });
+  assert.equal(result.email, 'only@example.com');
+  for (const field of ['firstName', 'lastName', 'country', 'address', 'apartment', 'city', 'region', 'postal']) {
+    assert.equal(result[field], '');
+  }
+});
+test('accepts partial delivery details without making other fields required', () => {
+  const result = validateSignup({ email: 'partial@example.com', consent: true, country: 'Canada' });
+  assert.equal(result.country, 'Canada');
+  assert.equal(result.address, '');
 });

@@ -8,9 +8,10 @@ Credits: [foqos.app](https://foqos.app) · [Blocktap on MakerWorld](https://make
 
 ## Preorder waitlist
 
-The product page links to `/waitlist.html`. The form saves email, name, delivery
-address, product, $39 launch price, consent version, and signup time in the Convex
-`waitlist` table. Joining costs $0; no payment or confirmation email is sent.
+The product page links to `/waitlist.html`. The form requires only email; name and delivery address are optional. It saves
+email, optional delivery details, product, $39 launch price, consent version, and signup time in the Convex
+`waitlist` table. The submit button enables for a valid email, above the expandable delivery section.
+Submitting agrees to the email-update disclosure. Joining costs $0; no payment or confirmation email is sent.
 The old `/billing.html` URL forwards to the waitlist.
 
 Manage entries in the [Convex project dashboard](https://dashboard.convex.dev/t/kk5241/blocktap).

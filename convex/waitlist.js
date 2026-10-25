@@ -14,7 +14,7 @@ export const join = internalMutation({
     await ctx.db.insert('waitlist', {
       email, firstName, lastName, deliveryAddress,
       product: 'blocktap-violet', priceUsd: 39, status: 'waitlisted',
-      consentVersion: 'preorder-updates-v1', createdAt: Date.now(),
+      consentVersion: 'preorder-updates-v2', createdAt: Date.now(),
     });
     return { ok: true };
   },

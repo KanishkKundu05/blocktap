@@ -2,11 +2,22 @@ const form = document.querySelector('#waitlist-form');
 const submitButton = document.querySelector('#join-waitlist');
 const statusMessage = document.querySelector('#waitlist-status');
 const success = document.querySelector('#waitlist-success');
+const emailInput = form.elements.email;
 let submitting = false;
+
+function updateSubmitButton() {
+  const email = emailInput.value.trim();
+  submitButton.disabled = submitting || !emailInput.validity.valid || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+emailInput.addEventListener('input', updateSubmitButton);
+emailInput.addEventListener('change', updateSubmitButton);
+window.addEventListener('pageshow', updateSubmitButton);
+updateSubmitButton();
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  if (submitting || !form.reportValidity()) return;
+  updateSubmitButton();
+  if (submitButton.disabled || !form.reportValidity()) return;
   const endpoint = window.BLOCKTAP_WAITLIST_URL;
   if (!endpoint) {
     statusMessage.textContent = 'The waitlist is temporarily unavailable. Please try again shortly.';
@@ -20,7 +31,8 @@ form.addEventListener('submit', async (event) => {
   const timeout = setTimeout(() => controller.abort(), 15000);
   try {
     const values = Object.fromEntries(new FormData(form));
-    values.consent = form.elements.consent.checked;
+    // The disclosure immediately below the submit button explains this consent.
+    values.consent = true;
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -43,7 +55,7 @@ form.addEventListener('submit', async (event) => {
   } finally {
     clearTimeout(timeout);
     submitting = false;
-    submitButton.disabled = false;
+    updateSubmitButton();
     form.removeAttribute('aria-busy');
   }
 });
