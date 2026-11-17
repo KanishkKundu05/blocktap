@@ -13,3 +13,11 @@ function updateTime() {
 slider.addEventListener('input', updateTime);
 updateTime();
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+const universitySection = document.querySelector('.university-section');
+const logoPause = document.querySelector('.uni-pause');
+logoPause?.addEventListener('click', () => {
+  const paused = universitySection.classList.toggle('is-paused');
+  logoPause.setAttribute('aria-pressed', String(paused));
+  logoPause.textContent = paused ? 'Resume logos' : 'Pause logos';
+});

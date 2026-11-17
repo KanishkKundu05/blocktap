@@ -3,3 +3,24 @@
 .companion{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:34px;padding:28px;background:#eeecf6;border-radius:7px}.companion h3{font-size:25px;font-weight:500;letter-spacing:-1px;margin:12px 0 8px}.companion p{max-width:530px;font-size:12px;line-height:1.8;color:var(--muted)}.companion small{display:block;margin-top:10px;font-size:10px;color:var(--muted)}.companion .button{flex-shrink:0;gap:20px;font-size:11px}.credits{padding-top:0;padding-bottom:30px;color:var(--muted);font-size:10px;line-height:1.8}.credits p+p{margin-top:5px}.credits a,.faq details p a{text-decoration:underline;text-underline-offset:3px}.credits a:hover{color:var(--ink)}@media(max-width:760px){.companion{align-items:flex-start;flex-direction:column;padding:24px;gap:20px}.companion .button{max-width:100%;font-size:10px;padding:16px;gap:12px}}
 
 .companion-link{margin-top:18px;line-height:1.5;text-decoration:underline;text-underline-offset:4px}
+
+.university-section{padding:38px 0;background:#eeecf6;border-top:1px solid #ded9ed;overflow:hidden}
+.uni-marquee{overflow:hidden;mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+.uni-track{display:flex;width:max-content;animation:uni-scroll 65s linear infinite}
+.uni-marquee-reverse .uni-track{animation-direction:reverse;animation-duration:72s}
+.uni-group{display:flex;align-items:center;gap:48px;list-style:none;margin:0;padding:0 48px 0 0}
+.uni-logo{display:flex;align-items:center;gap:12px;width:190px;min-height:58px}
+.uni-logo img{width:44px;height:44px;object-fit:contain;flex-shrink:0}
+.uni-logo span{font-family:Manrope,sans-serif;font-size:13px;font-weight:700;line-height:1.35;color:#514b63}
+.university-copy{text-align:center;padding-top:36px;padding-bottom:32px}
+.university-copy .eyebrow{justify-content:center;color:#756b91;font-size:9px}
+.university-copy h2{margin:16px 0 18px;font-size:clamp(30px,4.1vw,54px);line-height:1.18;letter-spacing:-1.8px}
+.student-count{color:var(--purple);font-weight:800}
+.university-copy h2 .serif{font-size:1.2em}
+.uni-pause{border:1px solid #c9c1dd;background:transparent;border-radius:99px;padding:7px 13px;font-size:10px;color:#635b76;cursor:pointer}
+.uni-pause:hover{background:#e2ddef}
+.uni-pause:focus-visible{outline:2px solid var(--purple);outline-offset:4px}
+.university-section.is-paused .uni-track,.university-section:hover .uni-track{animation-play-state:paused}
+@keyframes uni-scroll{to{transform:translateX(-50%)}}
+@media(max-width:760px){.university-section{padding:28px 0}.uni-group{gap:28px;padding-right:28px}.uni-logo{width:155px;gap:10px}.uni-logo img{width:36px;height:36px}.uni-logo span{font-size:11px}.university-copy{padding-top:28px;padding-bottom:26px}.university-copy .eyebrow{font-size:7px;letter-spacing:1.2px}.university-copy h2{letter-spacing:-1px}}
+@media(prefers-reduced-motion:reduce){.uni-track{animation:none}.uni-marquee{overflow-x:auto;mask-image:none}.uni-group[aria-hidden=true]{display:none}.uni-pause{display:none}}
