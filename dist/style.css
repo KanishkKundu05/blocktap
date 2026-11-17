@@ -17,10 +17,7 @@
 .university-copy h2{margin:16px 0 18px;font-size:clamp(30px,4.1vw,54px);line-height:1.18;letter-spacing:-1.8px}
 .student-count{color:var(--purple);font-weight:800}
 .university-copy h2 .serif{font-size:1.2em}
-.uni-pause{border:1px solid #c9c1dd;background:transparent;border-radius:99px;padding:7px 13px;font-size:10px;color:#635b76;cursor:pointer}
-.uni-pause:hover{background:#e2ddef}
-.uni-pause:focus-visible{outline:2px solid var(--purple);outline-offset:4px}
-.university-section.is-paused .uni-track,.university-section:hover .uni-track{animation-play-state:paused}
+.university-section:hover .uni-track{animation-play-state:paused}
 @keyframes uni-scroll{to{transform:translateX(-50%)}}
 @media(max-width:760px){.university-section{padding:28px 0}.uni-group{gap:28px;padding-right:28px}.uni-logo{width:155px;gap:10px}.uni-logo img{width:36px;height:36px}.uni-logo span{font-size:11px}.university-copy{padding-top:28px;padding-bottom:26px}.university-copy .eyebrow{font-size:7px;letter-spacing:1.2px}.university-copy h2{letter-spacing:-1px}}
-@media(prefers-reduced-motion:reduce){.uni-track{animation:none}.uni-marquee{overflow-x:auto;mask-image:none}.uni-group[aria-hidden=true]{display:none}.uni-pause{display:none}}
+@media(prefers-reduced-motion:reduce){.uni-track{animation:none}.uni-marquee{overflow-x:auto;mask-image:none}.uni-group[aria-hidden=true]{display:none}}
